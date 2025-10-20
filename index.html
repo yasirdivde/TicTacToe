@@ -143,13 +143,14 @@
                         </div>
                     </div>
                     <div id="create-game-view" class="hidden">
-                        <p class="text-xl text-amber-800 mb-2">Share this code with your friend:</p>
-                        <div class="relative">
-                            <div id="game-code-display" class="text-6xl font-mono tracking-widest bg-white p-4 rounded-lg shadow-inner text-amber-900 mb-4 select-all">------</div>
-                             <button onclick="copyToClipboard('game-code-display')" class="absolute top-2 right-2 bg-gray-300 p-2 rounded-md hover:bg-gray-400 transition">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                             </button>
+                        <div class="flex justify-between items-end mb-1">
+                            <p class="text-xl text-amber-800">Share this code with your friend:</p>
+                            <button onclick="copyToClipboard('game-code-display')" class="flex items-center space-x-1 bg-amber-200 text-amber-800 px-3 py-1 rounded-lg shadow-sm hover:bg-amber-300 transition btn-chunky border-amber-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <span class="text-lg">Copy</span>
+                            </button>
                         </div>
+                        <div id="game-code-display" class="text-6xl font-mono tracking-widest bg-white p-4 rounded-lg shadow-inner text-amber-900 mb-4 select-all">------</div>
                         <p id="connection-status" class="text-xl text-amber-700">Waiting for friend to join...</p>
                     </div>
                      <div id="join-game-view" class="hidden">
@@ -187,11 +188,17 @@
                     <div class="mt-6 flex justify-between items-center">
                         <button id="main-menu-btn-game" class="bg-slate-400 text-slate-800 text-xl py-2 px-5 rounded-lg shadow-md border-slate-500 btn-chunky hover:bg-slate-300">Main Menu</button>
                         
-                        <div id="chat-toggle-container" class="relative">
-                            <button id="chat-toggle-btn" class="text-amber-900 text-2xl p-3 rounded-full shadow-md bg-amber-200 hover:bg-amber-300 transition">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                            </button>
-                            <div id="chat-notification-dot" class="hidden absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full border-2 border-amber-100"></div>
+                        <div id="online-controls-container" class="hidden items-center space-x-2">
+                            <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="👍">👍</button>
+                            <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="😂">😂</button>
+                            <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="🎉">🎉</button>
+                            <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="🤔">🤔</button>
+                            <div class="relative">
+                                <button id="chat-toggle-btn" class="text-amber-900 text-2xl p-3 rounded-full shadow-md bg-amber-200 hover:bg-amber-300 transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                </button>
+                                <div id="chat-notification-dot" class="hidden absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full border-2 border-amber-100"></div>
+                            </div>
                         </div>
 
                         <button id="pause-btn" class="text-amber-900 text-2xl p-3 rounded-full shadow-md bg-amber-200 hover:bg-amber-300 transition">
@@ -217,12 +224,6 @@
                 <div class="flex space-x-2">
                     <input type="text" id="chat-input" placeholder="Say hi..." class="flex-grow text-xl p-2 rounded-lg border-2 border-amber-300 focus:border-amber-600 focus:ring-0 text-amber-900">
                     <button id="send-chat-btn" class="bg-sky-700 text-white px-5 rounded-lg shadow-md border-sky-800 btn-chunky hover:bg-sky-600">Send</button>
-                </div>
-                <div class="flex justify-center space-x-2 mt-3">
-                     <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="👍">👍</button>
-                     <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="😂">😂</button>
-                     <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="🎉">🎉</button>
-                     <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="🤔">🤔</button>
                 </div>
             </div>
         </div>
@@ -277,7 +278,7 @@
             const chatModal = document.getElementById('chat-modal');
             const chatBox = document.getElementById('chat-box');
             const chatInput = document.getElementById('chat-input');
-            const chatToggleContainer = document.getElementById('chat-toggle-container');
+            const onlineControlsContainer = document.getElementById('online-controls-container');
             const chatNotificationDot = document.getElementById('chat-notification-dot');
             const onlineOptions = document.getElementById('online-options');
             const createGameView = document.getElementById('create-game-view');
@@ -609,7 +610,7 @@
                 document.getElementById('reset-btn').style.display = gameMode === 'online' ? 'none' : 'block';
                 document.getElementById('pause-btn').style.display = gameMode === 'online' ? 'none' : 'block';
                 document.getElementById('main-menu-btn-game').style.display = gameMode === 'online' ? 'none' : 'block';
-                chatToggleContainer.style.display = gameMode === 'online' ? 'block' : 'none';
+                onlineControlsContainer.style.display = gameMode === 'online' ? 'flex' : 'none';
 
                 showScreen('game');
                 resetGame(false); // don't send signal on initial start
