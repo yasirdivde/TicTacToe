@@ -184,23 +184,16 @@
                         </div>
                     </div>
 
-                    <!-- Online Mode UI: Chat and Emojis -->
-                    <div id="online-ui" class="hidden mt-4">
-                        <div id="chat-box" class="h-32 bg-white/70 rounded-lg p-2 overflow-y-auto mb-2 flex flex-col space-y-2 shadow-inner"></div>
-                        <div class="flex space-x-2">
-                            <input type="text" id="chat-input" placeholder="Say hi..." class="flex-grow text-xl p-2 rounded-lg border-2 border-amber-300 focus:border-amber-600 focus:ring-0 text-amber-900">
-                            <button id="send-chat-btn" class="bg-sky-700 text-white px-5 rounded-lg shadow-md border-sky-800 btn-chunky hover:bg-sky-600">Send</button>
-                        </div>
-                        <div class="flex justify-center space-x-2 mt-3">
-                             <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="👍">👍</button>
-                             <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="😂">😂</button>
-                             <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="🎉">🎉</button>
-                             <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="🤔">🤔</button>
-                        </div>
-                    </div>
-
                     <div class="mt-6 flex justify-between items-center">
                         <button id="main-menu-btn-game" class="bg-slate-400 text-slate-800 text-xl py-2 px-5 rounded-lg shadow-md border-slate-500 btn-chunky hover:bg-slate-300">Main Menu</button>
+                        
+                        <div id="chat-toggle-container" class="relative">
+                            <button id="chat-toggle-btn" class="text-amber-900 text-2xl p-3 rounded-full shadow-md bg-amber-200 hover:bg-amber-300 transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                            </button>
+                            <div id="chat-notification-dot" class="hidden absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full border-2 border-amber-100"></div>
+                        </div>
+
                         <button id="pause-btn" class="text-amber-900 text-2xl p-3 rounded-full shadow-md bg-amber-200 hover:bg-amber-300 transition">
                             <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h4v16H6zM14 4h4v16h-4z"></path></svg>
                             <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="hidden"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
@@ -211,16 +204,54 @@
             </section>
         </div>
         
-        <!-- Game Over Modal -->
-        <div id="game-over-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-20">
-             <div class="bg-amber-100 p-8 rounded-2xl shadow-2xl border-4 border-amber-900/20 text-center max-w-sm w-full">
-                <h2 id="winner-message" class="text-5xl font-bold text-amber-900 mb-6">You Win!</h2>
-                <div class="space-y-4">
-                    <button id="play-again-btn" class="w-full bg-amber-800 text-amber-100 text-3xl py-3 px-8 rounded-lg shadow-md border-amber-950 btn-chunky hover:bg-amber-700">Play Again</button>
-                    <button id="main-menu-btn-modal" class="w-full bg-slate-400 text-slate-800 text-2xl py-3 px-8 rounded-lg shadow-md border-slate-500 btn-chunky hover:bg-slate-300">Main Menu</button>
+        <!-- Chat Modal -->
+        <div id="chat-modal" class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] max-w-lg z-30">
+            <div class="bg-amber-100 p-4 rounded-2xl shadow-2xl border-4 border-amber-900/20">
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="text-3xl text-amber-900">Chat</h3>
+                    <button id="close-chat-btn" class="text-amber-600 hover:text-amber-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+                <div id="chat-box" class="h-40 bg-white/70 rounded-lg p-2 overflow-y-auto mb-2 flex flex-col space-y-2 shadow-inner"></div>
+                <div class="flex space-x-2">
+                    <input type="text" id="chat-input" placeholder="Say hi..." class="flex-grow text-xl p-2 rounded-lg border-2 border-amber-300 focus:border-amber-600 focus:ring-0 text-amber-900">
+                    <button id="send-chat-btn" class="bg-sky-700 text-white px-5 rounded-lg shadow-md border-sky-800 btn-chunky hover:bg-sky-600">Send</button>
+                </div>
+                <div class="flex justify-center space-x-2 mt-3">
+                     <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="👍">👍</button>
+                     <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="😂">😂</button>
+                     <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="🎉">🎉</button>
+                     <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="🤔">🤔</button>
                 </div>
             </div>
         </div>
+
+        <!-- Game Over Modal -->
+        <div id="game-over-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-20">
+             <div id="game-over-content" class="bg-amber-100 p-8 rounded-2xl shadow-2xl border-4 border-amber-900/20 text-center max-w-sm w-full">
+                <h2 id="winner-message" class="text-5xl font-bold text-amber-900 mb-6">You Win!</h2>
+                <div id="game-over-buttons" class="space-y-4">
+                    <button id="play-again-btn" class="w-full bg-amber-800 text-amber-100 text-3xl py-3 px-8 rounded-lg shadow-md border-amber-950 btn-chunky hover:bg-amber-700">Play Again</button>
+                    <button id="main-menu-btn-modal" class="w-full bg-slate-400 text-slate-800 text-2xl py-3 px-8 rounded-lg shadow-md border-slate-500 btn-chunky hover:bg-slate-300">Main Menu</button>
+                </div>
+                <div id="rematch-sent-view" class="hidden">
+                    <p class="text-2xl text-amber-800">Rematch request sent...</p>
+                </div>
+             </div>
+        </div>
+        
+        <!-- Rematch Request Modal -->
+        <div id="rematch-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-40">
+            <div class="bg-amber-100 p-8 rounded-2xl shadow-2xl border-4 border-amber-900/20 text-center max-w-sm w-full">
+                <h2 id="rematch-message" class="text-4xl font-bold text-amber-900 mb-6">Opponent wants a rematch!</h2>
+                <div class="flex space-x-4">
+                    <button id="rematch-accept-btn" class="w-full bg-green-700 text-white text-2xl py-3 px-8 rounded-lg shadow-md border-green-800 btn-chunky hover:bg-green-600">Accept</button>
+                    <button id="rematch-reject-btn" class="w-full bg-red-700 text-white text-2xl py-3 px-8 rounded-lg shadow-md border-red-800 btn-chunky hover:bg-red-600">Reject</button>
+                </div>
+            </div>
+        </div>
+
     </div>
     
     <script>
@@ -243,9 +274,11 @@
                 onlineSetup: document.getElementById('online-setup-screen'),
                 game: document.getElementById('game-screen'),
             };
-            const onlineUI = document.getElementById('online-ui');
+            const chatModal = document.getElementById('chat-modal');
             const chatBox = document.getElementById('chat-box');
             const chatInput = document.getElementById('chat-input');
+            const chatToggleContainer = document.getElementById('chat-toggle-container');
+            const chatNotificationDot = document.getElementById('chat-notification-dot');
             const onlineOptions = document.getElementById('online-options');
             const createGameView = document.getElementById('create-game-view');
             const joinGameView = document.getElementById('join-game-view');
@@ -254,6 +287,10 @@
             const joinCodeInput = document.getElementById('join-code-input');
             const joinStatus = document.getElementById('join-status');
             const emojiReaction = document.getElementById('emoji-reaction');
+            const gameOverModal = document.getElementById('game-over-modal');
+            const gameOverButtons = document.getElementById('game-over-buttons');
+            const rematchSentView = document.getElementById('rematch-sent-view');
+            const rematchModal = document.getElementById('rematch-modal');
 
             // --- Buttons ---
             document.getElementById('save-name-btn').addEventListener('click', saveNameAndGoToMenu);
@@ -266,9 +303,8 @@
             document.getElementById('reset-btn').addEventListener('click', () => resetGame());
             document.getElementById('pause-btn').addEventListener('click', togglePause);
             document.getElementById('resume-btn').addEventListener('click', togglePause);
-            document.getElementById('play-again-btn').addEventListener('click', () => resetGame());
-            document.getElementById('main-menu-btn-game').addEventListener('click', returnToMainMenu);
-            document.getElementById('main-menu-btn-modal').addEventListener('click', returnToMainMenu);
+            document.getElementById('play-again-btn').addEventListener('click', handlePlayAgain);
+            document.getElementById('main-menu-btn-modal').addEventListener('click', handleGameOverMainMenu);
             document.querySelectorAll('.config-btn').forEach(b => b.addEventListener('click', handleConfigSelection));
             document.querySelectorAll('.back-to-main-menu-btn').forEach(b => b.addEventListener('click', returnToMainMenu));
             document.getElementById('create-game-btn').addEventListener('click', createGame);
@@ -277,9 +313,13 @@
                 joinGameView.classList.remove('hidden');
             });
             document.getElementById('join-game-btn').addEventListener('click', joinGame);
+            document.getElementById('chat-toggle-btn').addEventListener('click', toggleChat);
+            document.getElementById('close-chat-btn').addEventListener('click', toggleChat);
             document.getElementById('send-chat-btn').addEventListener('click', sendChatMessage);
             chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendChatMessage(); });
             document.querySelectorAll('.emoji-btn').forEach(btn => btn.addEventListener('click', sendEmojiReaction));
+            document.getElementById('rematch-accept-btn').addEventListener('click', handleRematchAccept);
+            document.getElementById('rematch-reject-btn').addEventListener('click', handleRematchReject);
 
             // --- Game State & WebRTC State ---
             let gameState = Array(9).fill('');
@@ -345,11 +385,19 @@
 
             function setupConnectionEvents() {
                 conn.on('open', () => {
+                    // Exchange names on connect
+                    const myName = localStorage.getItem('ticTacToePlayerName') || 'Player';
+                    sendData({ type: 'name', name: myName });
                     startOnlineGame();
                 });
 
                 conn.on('data', (data) => {
                     switch (data.type) {
+                        case 'name':
+                            const opponentMark = localPlayerMark === 'X' ? 'O' : 'X';
+                            playerNames[opponentMark] = data.name;
+                            updateScoreboardUI();
+                            break;
                         case 'move':
                             makeMove(data.index, data.player);
                             handlePlayerChange();
@@ -360,8 +408,23 @@
                         case 'emoji':
                             showEmojiReaction(data.emoji);
                             break;
+                        case 'rematch-request':
+                            rematchModal.classList.remove('hidden');
+                            break;
+                        case 'rematch-accept':
+                            rematchModal.classList.add('hidden');
+                            gameOverModal.classList.add('hidden');
+                            resetGame(false);
+                            break;
+                        case 'rematch-reject':
+                            alert("Opponent rejected the rematch.");
+                            returnToMainMenu();
+                            break;
+                        case 'go-to-menu':
+                             returnToMainMenu();
+                             break;
                         case 'reset':
-                            resetGame(false); // don't send reset signal back
+                            resetGame(false);
                             break;
                     }
                 });
@@ -381,9 +444,15 @@
                 gameMode = 'online';
                 const storedName = localStorage.getItem('ticTacToePlayerName') || 'You';
                 playerNames[localPlayerMark] = storedName;
-                playerNames[localPlayerMark === 'X' ? 'O' : 'X'] = 'Friend';
                 startGame();
-                onlineUI.classList.remove('hidden');
+            }
+
+            // Chat UI Logic
+            function toggleChat() {
+                chatModal.classList.toggle('hidden');
+                if (!chatModal.classList.contains('hidden')) {
+                    chatNotificationDot.classList.add('hidden');
+                }
             }
 
             function sendChatMessage() {
@@ -396,6 +465,9 @@
             }
             
             function displayChatMessage(message, isMine) {
+                if(chatModal.classList.contains('hidden') && !isMine) {
+                    chatNotificationDot.classList.remove('hidden');
+                }
                 const alignClass = isMine ? 'self-end' : 'self-start';
                 const colorClass = isMine ? 'bg-blue-200' : 'bg-gray-200';
                 const msgDiv = document.createElement('div');
@@ -436,11 +508,38 @@
                     }
                 }
             }
+            
+            function handlePlayAgain() {
+                if (gameMode === 'online') {
+                    sendData({type: 'rematch-request'});
+                    gameOverButtons.classList.add('hidden');
+                    rematchSentView.classList.remove('hidden');
+                } else {
+                    resetGame();
+                }
+            }
+
+            function handleGameOverMainMenu() {
+                if (gameMode === 'online') {
+                    sendData({type: 'go-to-menu'});
+                }
+                returnToMainMenu();
+            }
+
+            function handleRematchAccept() {
+                sendData({type: 'rematch-accept'});
+                rematchModal.classList.add('hidden');
+                gameOverModal.classList.add('hidden');
+                resetGame(false);
+            }
+
+            function handleRematchReject() {
+                sendData({type: 'rematch-reject'});
+                returnToMainMenu();
+            }
 
             // --- Core Game Logic & UI (mostly unchanged) ---
             const gameBoard = document.getElementById('game-board');
-            const gameOverModal = document.getElementById('game-over-modal');
-            const pauseOverlay = document.getElementById('pause-overlay');
             const turnIndicator = document.getElementById('turn-indicator');
             const winnerMessage = document.getElementById('winner-message');
             const scoresUI = {
@@ -506,6 +605,12 @@
             function startGame() {
                 scores = { X: 0, O: 0 };
                 updateScoreboardUI();
+                
+                document.getElementById('reset-btn').style.display = gameMode === 'online' ? 'none' : 'block';
+                document.getElementById('pause-btn').style.display = gameMode === 'online' ? 'none' : 'block';
+                document.getElementById('main-menu-btn-game').style.display = gameMode === 'online' ? 'none' : 'block';
+                chatToggleContainer.style.display = gameMode === 'online' ? 'block' : 'none';
+
                 showScreen('game');
                 resetGame(false); // don't send signal on initial start
             }
@@ -517,7 +622,7 @@
                 conn = null;
                 
                 // Reset UI elements
-                onlineUI.classList.add('hidden');
+                chatModal.classList.add('hidden');
                 chatBox.innerHTML = '';
                 onlineOptions.classList.remove('hidden');
                 createGameView.classList.add('hidden');
@@ -525,8 +630,9 @@
                 joinCodeInput.value = '';
                 joinStatus.textContent = '';
                 gameCodeDisplay.textContent = '------';
-
+                rematchModal.classList.add('hidden');
                 gameOverModal.classList.add('hidden');
+
                 showScreen('mainMenu');
             }
 
@@ -538,8 +644,14 @@
                 currentPlayer = 'X';
                 gameActive = true;
                 isPaused = false;
-                pauseOverlay.classList.add('hidden');
+                
                 gameOverModal.classList.add('hidden');
+                rematchModal.classList.add('hidden');
+                gameOverButtons.classList.remove('hidden');
+                rematchSentView.classList.add('hidden');
+                
+                document.getElementById('pause-overlay').classList.add('hidden');
+
                 updateBoard();
                 highlightLastMove(-1);
                 updateTurnIndicator();
@@ -611,9 +723,10 @@
             }
 
             function togglePause() {
-                if (!gameActive || gameMode === 'online') return; // Pause disabled in online mode for simplicity
+                if (!gameActive || gameMode === 'online') return;
                 isPaused = !isPaused;
-                pauseOverlay.classList.toggle('hidden'); pauseOverlay.classList.toggle('flex');
+                document.getElementById('pause-overlay').classList.toggle('hidden'); 
+                document.getElementById('pause-overlay').classList.toggle('flex');
                 togglePauseIcon(isPaused);
             }
 
