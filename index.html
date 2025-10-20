@@ -6,6 +6,7 @@
     <title>Cozy Wood Tic Tac Toe</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
@@ -64,23 +65,24 @@
 </head>
 <body class="flex items-center justify-center min-h-screen">
 
-    <div class="container mx-auto p-4 max-w-lg relative">
+    <div class="container mx-auto p-4 max-w-4xl relative">
 
         <!-- All Screens Container -->
         <div id="screens-container" class="relative">
             <!-- Name Entry -->
             <section id="name-screen" class="screen hidden">
-                <div class="bg-amber-100 p-8 rounded-2xl shadow-lg border-4 border-amber-900/20 text-center">
+                <div class="bg-amber-100 p-8 rounded-2xl shadow-lg border-4 border-amber-900/20 text-center max-w-lg mx-auto">
                     <h1 class="text-6xl font-bold text-amber-900 mb-2">Tic Tac Toe</h1>
                     <p class="text-amber-700 text-2xl mb-6">Cozy Wood Edition</p>
                     <input type="text" id="player-name-input" placeholder="Enter Your Name" class="w-full text-2xl p-3 rounded-lg border-2 border-amber-300 focus:border-amber-600 focus:ring-0 text-center text-amber-900 mb-4">
                     <button id="save-name-btn" class="w-full bg-amber-800 text-amber-100 text-3xl py-4 px-8 rounded-lg shadow-md border-amber-950 btn-chunky hover:bg-amber-700">Continue</button>
+                    <p class="text-amber-700/50 text-sm mt-8">Made By YASIR DIVDE</p>
                 </div>
             </section>
             
             <!-- Main Menu -->
             <section id="main-menu" class="screen hidden">
-                 <div class="bg-amber-100 p-8 rounded-2xl shadow-lg border-4 border-amber-900/20 text-center">
+                 <div class="bg-amber-100 p-8 rounded-2xl shadow-lg border-4 border-amber-900/20 text-center max-w-lg mx-auto">
                     <div class="flex items-center justify-center mb-6">
                         <h2 id="welcome-message" class="text-4xl font-bold text-amber-900 truncate"></h2>
                         <button id="edit-name-btn" class="ml-3 text-amber-600 hover:text-amber-800">
@@ -88,16 +90,17 @@
                         </button>
                     </div>
                     <div class="space-y-4">
-                        <button id="vs-computer-btn" class="w-full bg-amber-800 text-amber-100 text-3xl py-4 px-8 rounded-lg shadow-md border-amber-950 btn-chunky hover:bg-amber-700">Play vs Computer</button>
-                        <button id="vs-player-btn" class="w-full bg-amber-600 text-amber-900 text-3xl py-4 px-8 rounded-lg shadow-md border-amber-800 btn-chunky hover:bg-amber-500">Pass N Play</button>
-                        <button id="online-btn" class="w-full bg-sky-700 text-sky-100 text-3xl py-4 px-8 rounded-lg shadow-md border-sky-900 btn-chunky hover:bg-sky-600">Play with Friend</button>
+                        <button id="vs-computer-btn" class="w-full flex items-center justify-center space-x-3 bg-amber-800 text-amber-100 text-3xl py-4 px-8 rounded-lg shadow-md border-amber-950 btn-chunky hover:bg-amber-700"><i class="fas fa-desktop"></i><span>Play vs Computer</span></button>
+                        <button id="vs-player-btn" class="w-full flex items-center justify-center space-x-3 bg-amber-600 text-amber-900 text-3xl py-4 px-8 rounded-lg shadow-md border-amber-800 btn-chunky hover:bg-amber-500"><i class="fas fa-user-friends"></i><span>Pass N Play</span></button>
+                        <button id="online-btn" class="w-full flex items-center justify-center space-x-3 bg-sky-700 text-sky-100 text-3xl py-4 px-8 rounded-lg shadow-md border-sky-900 btn-chunky hover:bg-sky-600"><i class="fas fa-globe"></i><span>Play with Friend</span></button>
                     </div>
+                    <p class="text-amber-700/50 text-sm mt-8">Made By YASIR DIVDE</p>
                 </div>
             </section>
 
             <!-- Computer Setup -->
             <section id="computer-setup-screen" class="screen hidden">
-                <div class="bg-amber-100 p-8 rounded-2xl shadow-lg border-4 border-amber-900/20">
+                <div class="bg-amber-100 p-8 rounded-2xl shadow-lg border-4 border-amber-900/20 max-w-lg mx-auto">
                      <h2 class="text-4xl font-bold text-amber-900 mb-6 text-center">Computer Setup</h2>
                     <div class="mb-6">
                         <label class="text-2xl text-amber-800 mb-2 block text-center">Difficulty:</label>
@@ -121,7 +124,7 @@
             
             <!-- Pass N Play Setup -->
             <section id="player-setup-screen" class="screen hidden">
-                 <div class="bg-amber-100 p-8 rounded-2xl shadow-lg border-4 border-amber-900/20 text-center">
+                 <div class="bg-amber-100 p-8 rounded-2xl shadow-lg border-4 border-amber-900/20 text-center max-w-lg mx-auto">
                     <h2 class="text-4xl font-bold text-amber-900 mb-6">Pass N Play Setup</h2>
                     <div class="space-y-4 mb-6">
                         <input type="text" id="player1-name-input" placeholder="Player 1 Name (X)" class="w-full text-2xl p-3 rounded-lg border-2 border-amber-300 focus:border-amber-600 focus:ring-0 text-center text-amber-900">
@@ -134,7 +137,7 @@
 
              <!-- Online Multiplayer Setup -->
             <section id="online-setup-screen" class="screen hidden">
-                <div class="bg-amber-100 p-8 rounded-2xl shadow-lg border-4 border-amber-900/20 text-center">
+                <div class="bg-amber-100 p-8 rounded-2xl shadow-lg border-4 border-amber-900/20 text-center max-w-lg mx-auto">
                     <h2 class="text-4xl font-bold text-amber-900 mb-6">Play with Friend</h2>
                     <div id="online-options">
                         <div class="space-y-4">
@@ -165,55 +168,61 @@
             
             <!-- Game Screen -->
             <section id="game-screen" class="screen hidden">
-                <div class="bg-amber-100 p-6 sm:p-8 rounded-2xl shadow-lg border-4 border-amber-900/20 relative">
-                    <div id="emoji-reaction" class=""></div>
-                    <div class="flex justify-between items-center mb-6">
-                        <div class="text-center bg-white/70 px-4 py-2 rounded-lg">
-                            <p id="player-x-label" class="text-2xl text-red-700 font-bold truncate max-w-[100px]"></p>
-                            <p id="player-x-score" class="text-4xl text-amber-900">0</p>
-                        </div>
-                        <p id="turn-indicator" class="text-2xl text-amber-800 bg-amber-200 px-4 py-2 rounded-lg shadow-inner"></p>
-                         <div class="text-center bg-white/70 px-4 py-2 rounded-lg">
-                            <p id="player-o-label" class="text-2xl text-blue-700 font-bold truncate max-w-[100px]"></p>
-                            <p id="player-o-score" class="text-4xl text-amber-900">0</p>
-                        </div>
-                    </div>
-                    <div id="game-board" class="grid grid-cols-3 gap-2 bg-amber-800 p-2 rounded-lg shadow-inner relative">
-                        <div id="pause-overlay" class="hidden absolute inset-0 bg-black/70 rounded-lg flex-col items-center justify-center z-10">
-                             <h2 class="text-5xl text-white mb-4">Paused</h2>
-                             <button id="resume-btn" class="bg-amber-100 text-amber-900 text-2xl py-2 px-8 rounded-lg shadow-md border-amber-200 btn-chunky hover:bg-white">Resume</button>
+                <div class="w-full flex flex-col md:flex-row md:items-start md:space-x-8">
+                    <!-- Left Panel (Scores & Turn) -->
+                    <div class="w-full md:w-1/3 bg-amber-100 p-4 rounded-2xl shadow-lg border-4 border-amber-900/20 mb-4 md:mb-0">
+                        <div class="flex md:flex-col justify-between items-center h-full">
+                            <div class="text-center bg-white/70 px-4 py-2 rounded-lg">
+                                <p id="player-x-label" class="text-2xl text-red-700 font-bold truncate max-w-[100px] md:max-w-full"></p>
+                                <p id="player-x-score" class="text-4xl text-amber-900">0</p>
+                            </div>
+                            <p id="turn-indicator" class="text-2xl text-amber-800 bg-amber-200 px-4 py-2 rounded-lg shadow-inner my-4 text-center"></p>
+                             <div class="text-center bg-white/70 px-4 py-2 rounded-lg">
+                                <p id="player-o-label" class="text-2xl text-blue-700 font-bold truncate max-w-[100px] md:max-w-full"></p>
+                                <p id="player-o-score" class="text-4xl text-amber-900">0</p>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="mt-6 flex justify-between items-center">
-                        <button id="main-menu-btn-game" class="bg-slate-400 text-slate-800 text-xl py-2 px-5 rounded-lg shadow-md border-slate-500 btn-chunky hover:bg-slate-300">Main Menu</button>
-                        
-                        <div id="online-controls-container" class="hidden items-center space-x-2">
-                            <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="👍">👍</button>
-                            <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="😂">😂</button>
-                            <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="🎉">🎉</button>
-                            <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="🤔">🤔</button>
-                            <div class="relative">
-                                <button id="chat-toggle-btn" class="text-amber-900 text-2xl p-3 rounded-full shadow-md bg-amber-200 hover:bg-amber-300 transition">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                                </button>
-                                <div id="chat-notification-dot" class="hidden absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full border-2 border-amber-100"></div>
+                    <!-- Right Panel (Board & Controls) -->
+                    <div class="w-full md:w-2/3 bg-amber-100 p-6 rounded-2xl shadow-lg border-4 border-amber-900/20 relative">
+                        <div id="emoji-reaction" class=""></div>
+                        <div id="game-board" class="grid grid-cols-3 gap-2 bg-amber-800 p-2 rounded-lg shadow-inner relative max-w-md mx-auto">
+                            <div id="pause-overlay" class="hidden absolute inset-0 bg-black/70 rounded-lg flex-col items-center justify-center z-10">
+                                 <h2 class="text-5xl text-white mb-4">Paused</h2>
+                                 <button id="resume-btn" class="bg-amber-100 text-amber-900 text-2xl py-2 px-8 rounded-lg shadow-md border-amber-200 btn-chunky hover:bg-white">Resume</button>
                             </div>
                         </div>
 
-                        <button id="pause-btn" class="text-amber-900 text-2xl p-3 rounded-full shadow-md bg-amber-200 hover:bg-amber-300 transition">
-                            <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h4v16H6zM14 4h4v16h-4z"></path></svg>
-                            <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="hidden"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                        </button>
-                        <button id="reset-btn" class="bg-amber-900 text-amber-100 text-2xl py-3 px-6 rounded-lg shadow-md border-amber-950 btn-chunky hover:bg-amber-800">Reset</button>
+                        <div class="mt-6 flex justify-between items-center max-w-md mx-auto">
+                            <button id="main-menu-btn-game" class="bg-slate-400 text-slate-800 text-xl py-2 px-5 rounded-lg shadow-md border-slate-500 btn-chunky hover:bg-slate-300">Main Menu</button>
+                            
+                            <div id="online-controls-container" class="hidden items-center space-x-2">
+                                <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="👍">👍</button>
+                                <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="😂">😂</button>
+                                <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="🎉">🎉</button>
+                                <button class="emoji-btn text-3xl p-2 rounded-full bg-amber-200 hover:bg-amber-300 transition" data-emoji="🤔">🤔</button>
+                                <div class="relative">
+                                    <button id="chat-toggle-btn" class="text-amber-900 text-2xl p-3 rounded-full shadow-md bg-amber-200 hover:bg-amber-300 transition">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                    </button>
+                                    <div id="chat-notification-dot" class="hidden absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full border-2 border-amber-100"></div>
+                                </div>
+                            </div>
+
+                            <button id="pause-btn" class="text-amber-900 text-2xl p-3 rounded-full shadow-md bg-amber-200 hover:bg-amber-300 transition">
+                                <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h4v16H6zM14 4h4v16h-4z"></path></svg>
+                                <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="hidden"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                            </button>
+                            <button id="reset-btn" class="bg-amber-900 text-amber-100 text-2xl py-3 px-6 rounded-lg shadow-md border-amber-950 btn-chunky hover:bg-amber-800">Reset</button>
+                        </div>
                     </div>
                 </div>
             </section>
         </div>
         
         <!-- Chat Modal -->
-        <div id="chat-modal" class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] max-w-lg z-30">
-            <div class="bg-amber-100 p-4 rounded-2xl shadow-2xl border-4 border-amber-900/20">
+        <div id="chat-modal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-30">
+             <div class="bg-amber-100 p-4 rounded-2xl shadow-2xl border-4 border-amber-900/20 w-full max-w-lg">
                 <div class="flex justify-between items-center mb-3">
                     <h3 class="text-3xl text-amber-900">Chat</h3>
                     <button id="close-chat-btn" class="text-amber-600 hover:text-amber-900">
@@ -250,6 +259,14 @@
                     <button id="rematch-accept-btn" class="w-full bg-green-700 text-white text-2xl py-3 px-8 rounded-lg shadow-md border-green-800 btn-chunky hover:bg-green-600">Accept</button>
                     <button id="rematch-reject-btn" class="w-full bg-red-700 text-white text-2xl py-3 px-8 rounded-lg shadow-md border-red-800 btn-chunky hover:bg-red-600">Reject</button>
                 </div>
+            </div>
+        </div>
+
+        <!-- Custom Alert Modal -->
+        <div id="custom-alert-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+            <div class="bg-amber-100 p-8 rounded-2xl shadow-2xl border-4 border-amber-900/20 text-center max-w-sm w-full">
+                <p id="custom-alert-message" class="text-3xl text-amber-900 mb-6">Message here</p>
+                <button id="custom-alert-ok-btn" class="w-full bg-amber-800 text-amber-100 text-2xl py-3 px-8 rounded-lg shadow-md border-amber-950 btn-chunky hover:bg-amber-700">OK</button>
             </div>
         </div>
 
@@ -292,6 +309,9 @@
             const gameOverButtons = document.getElementById('game-over-buttons');
             const rematchSentView = document.getElementById('rematch-sent-view');
             const rematchModal = document.getElementById('rematch-modal');
+            const customAlertModal = document.getElementById('custom-alert-modal');
+            const customAlertMessage = document.getElementById('custom-alert-message');
+            const customAlertOkBtn = document.getElementById('custom-alert-ok-btn');
 
             // --- Buttons ---
             document.getElementById('save-name-btn').addEventListener('click', saveNameAndGoToMenu);
@@ -301,11 +321,12 @@
             document.getElementById('online-btn').addEventListener('click', () => showScreen('onlineSetup'));
             document.getElementById('start-computer-game-btn').addEventListener('click', startComputerGame);
             document.getElementById('start-player-game-btn').addEventListener('click', startPlayerGame);
-            document.getElementById('reset-btn').addEventListener('click', () => resetGame());
+            document.getElementById('reset-btn').addEventListener('click', () => resetGame(true));
             document.getElementById('pause-btn').addEventListener('click', togglePause);
             document.getElementById('resume-btn').addEventListener('click', togglePause);
             document.getElementById('play-again-btn').addEventListener('click', handlePlayAgain);
             document.getElementById('main-menu-btn-modal').addEventListener('click', handleGameOverMainMenu);
+            document.getElementById('main-menu-btn-game').addEventListener('click', returnToMainMenu);
             document.querySelectorAll('.config-btn').forEach(b => b.addEventListener('click', handleConfigSelection));
             document.querySelectorAll('.back-to-main-menu-btn').forEach(b => b.addEventListener('click', returnToMainMenu));
             document.getElementById('create-game-btn').addEventListener('click', createGame);
@@ -334,6 +355,21 @@
             let peer;
             let conn;
             let localPlayerMark;
+            let onAlertOk = null;
+
+            // --- Custom Alert Logic ---
+            function showCustomAlert(message, onOkCallback) {
+                customAlertMessage.textContent = message;
+                customAlertModal.classList.remove('hidden');
+                onAlertOk = onOkCallback;
+            }
+            customAlertOkBtn.addEventListener('click', () => {
+                customAlertModal.classList.add('hidden');
+                if (onAlertOk) {
+                    onAlertOk();
+                    onAlertOk = null;
+                }
+            });
 
             function generatePeerId() {
                 return Math.random().toString(36).substring(2, 8).toUpperCase();
@@ -386,7 +422,6 @@
 
             function setupConnectionEvents() {
                 conn.on('open', () => {
-                    // Exchange names on connect
                     const myName = localStorage.getItem('ticTacToePlayerName') || 'Player';
                     sendData({ type: 'name', name: myName });
                     startOnlineGame();
@@ -418,8 +453,7 @@
                             resetGame(false);
                             break;
                         case 'rematch-reject':
-                            alert("Opponent rejected the rematch.");
-                            returnToMainMenu();
+                            showCustomAlert("Opponent rejected the rematch.", returnToMainMenu);
                             break;
                         case 'go-to-menu':
                              returnToMainMenu();
@@ -430,8 +464,7 @@
                     }
                 });
                  conn.on('close', () => {
-                    alert("Friend has disconnected.");
-                    returnToMainMenu();
+                    showCustomAlert("Friend has disconnected.", returnToMainMenu);
                  });
             }
 
@@ -516,7 +549,7 @@
                     gameOverButtons.classList.add('hidden');
                     rematchSentView.classList.remove('hidden');
                 } else {
-                    resetGame();
+                    resetGame(true);
                 }
             }
 
@@ -633,6 +666,7 @@
                 gameCodeDisplay.textContent = '------';
                 rematchModal.classList.add('hidden');
                 gameOverModal.classList.add('hidden');
+                customAlertModal.classList.add('hidden');
 
                 showScreen('mainMenu');
             }
@@ -673,9 +707,10 @@
             }
 
             function checkResult() {
+                // This function checks for a win or a draw.
                 const result = checkWinner();
                 if (result) {
-                    gameActive = false;
+                    gameActive = false; // Stop the game
                     winnerMessage.textContent = (result === 'T') ? "It's a Draw!" : `${playerNames[result]} Wins!`;
                     if (result !== 'T') {
                         scores[result]++;
@@ -687,10 +722,7 @@
             
             // --- UI Updates ---
             function createBoard() {
-                // Remove only old game cells, preserving the pause overlay
                 gameBoard.querySelectorAll('[data-index]').forEach(cell => cell.remove());
-                
-                // Create and append new cells
                 for (let i = 0; i < 9; i++) {
                     const cell = document.createElement('div');
                     cell.className = 'flex items-center justify-center bg-amber-600 rounded-md aspect-square cursor-pointer hover:bg-amber-500 transition-colors';
@@ -743,7 +775,20 @@
 
             // --- Helper & AI Functions ---
             const handlePlayerChange = () => { currentPlayer = (currentPlayer === 'X') ? 'O' : 'X'; updateTurnIndicator(); };
-            const checkWinner = (b = gameState) => { for(const c of winningConditions) if(b[c[0]]&&b[c[0]]===b[c[1]]&&b[c[0]]===b[c[2]]) return b[c[0]]; return b.includes('')?null:'T'; };
+            
+            // The checkWinner function iterates through all possible winning lines.
+            // It is the standard, correct algorithm for determining a winner in Tic Tac Toe.
+            const checkWinner = (b = gameState) => { 
+                for(const c of winningConditions) {
+                    // If the first cell of a line is not empty and all three cells in that line are the same...
+                    if(b[c[0]] && b[c[0]] === b[c[1]] && b[c[0]] === b[c[2]]) {
+                        return b[c[0]]; // ...then we have a winner. Return 'X' or 'O'.
+                    }
+                }
+                // If no winner, check if the board is full (no empty cells).
+                // If it's full, it's a Tie ('T'). Otherwise, the game is ongoing (null).
+                return b.includes('') ? null : 'T'; 
+            };
             const getRandomMove = () => { const e=gameState.map((v,i)=>v===''?i:null).filter(v=>v!==null); return e.length?e[Math.floor(Math.random()*e.length)]:-1; };
             
             function computerMove() {
