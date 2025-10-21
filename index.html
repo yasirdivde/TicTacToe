@@ -707,10 +707,9 @@
             }
 
             function checkResult() {
-                // This function checks for a win or a draw.
                 const result = checkWinner();
                 if (result) {
-                    gameActive = false; // Stop the game
+                    gameActive = false; 
                     winnerMessage.textContent = (result === 'T') ? "It's a Draw!" : `${playerNames[result]} Wins!`;
                     if (result !== 'T') {
                         scores[result]++;
@@ -776,17 +775,12 @@
             // --- Helper & AI Functions ---
             const handlePlayerChange = () => { currentPlayer = (currentPlayer === 'X') ? 'O' : 'X'; updateTurnIndicator(); };
             
-            // The checkWinner function iterates through all possible winning lines.
-            // It is the standard, correct algorithm for determining a winner in Tic Tac Toe.
             const checkWinner = (b = gameState) => { 
                 for(const c of winningConditions) {
-                    // If the first cell of a line is not empty and all three cells in that line are the same...
                     if(b[c[0]] && b[c[0]] === b[c[1]] && b[c[0]] === b[c[2]]) {
-                        return b[c[0]]; // ...then we have a winner. Return 'X' or 'O'.
+                        return b[c[0]];
                     }
                 }
-                // If no winner, check if the board is full (no empty cells).
-                // If it's full, it's a Tie ('T'). Otherwise, the game is ongoing (null).
                 return b.includes('') ? null : 'T'; 
             };
             const getRandomMove = () => { const e=gameState.map((v,i)=>v===''?i:null).filter(v=>v!==null); return e.length?e[Math.floor(Math.random()*e.length)]:-1; };
@@ -801,13 +795,20 @@
             }
 
             function findBestMove() {
-                let bestScore = -Infinity; let move = -1;
-                for (let i=0; i<9; i++) {
+                let bestScore = -Infinity; 
+                let move = -1;
+                for (let i = 0; i < 9; i++) {
                     if (gameState[i] === '') {
-                        gameState[i] = computerPlayer;
-                        let score = minimax(gameState, 0, false);
-                        gameState[i] = '';
-                        if (score > bestScore) { bestScore = score; move = i; }
+                        // Create a temporary state for the simulation
+                        const tempState = [...gameState];
+                        tempState[i] = computerPlayer;
+                        // The minimax function will mutate this tempState, which is fine.
+                        let score = minimax(tempState, 0, false); 
+                        // The original gameState remains untouched.
+                        if (score > bestScore) {
+                            bestScore = score;
+                            move = i;
+                        }
                     }
                 }
                 return move === -1 ? getRandomMove() : move;
@@ -816,12 +817,13 @@
             function minimax(board, depth, isMaximizing) {
                 const result = checkWinner(board);
                 if (result !== null) return result === computerPlayer ? 10 - depth : (result === humanPlayer ? depth - 10 : 0);
+                
                 let bestScore = isMaximizing ? -Infinity : Infinity;
                 for (let i = 0; i < 9; i++) {
                     if (board[i] === '') {
                         board[i] = isMaximizing ? computerPlayer : humanPlayer;
                         let score = minimax(board, depth + 1, !isMaximizing);
-                        board[i] = '';
+                        board[i] = ''; // Backtrack
                         bestScore = isMaximizing ? Math.max(score, bestScore) : Math.min(score, bestScore);
                     }
                 }
